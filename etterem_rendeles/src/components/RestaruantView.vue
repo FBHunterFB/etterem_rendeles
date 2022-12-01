@@ -11,14 +11,10 @@ const foods = ref([
 const selectedFood = ref();
 const customerDetails = ref(["","",""])
 const labels = ref(["Name","Email","Phone Number"])
-const checks = [/[A-Z][\w]{1,30} [A-Z][\w]{1,30}/,/[\w\W]{1,90}@gmail.com/,/[+][\d]{2,} [\d]{2,} [\d]{3,} [\d]{4,}/]
+const checks = ref([/[A-Z][\w]{1,30} [A-Z][\w]{1,30}/,/[\w\W]{1,90}@gmail.com/,/[+][\d]{2,} [\d]{2,} [\d]{3,} [\d]{4,}/])
 function selectFood(index){selectedFood.value = foods.value[index];}
-function checkdetail(index){
-    console.log(customerDetails[index]);
-}
-function placeAnOrder(){
-    router.push({name : 'Finish Order'})
-}
+function placeAnOrder(){if(checkInputs){router.push({name : 'Finish Order'})}}
+function checkInputs(){return checks.value[0].test(customerDetails.value[0]) && checks.value[1].test(customerDetails.value[1] && checks.value[2].test(customerDetails.value[2]))}
 </script>
 <template>
     <h1>Restaruant</h1>
@@ -31,7 +27,7 @@ function placeAnOrder(){
         </div>
         <div class="inputs">
             <div class="input" v-for="customer,index in customerDetails">
-                <label :for="index">{{labels[index]}}</label> <input :id="index" v-model="customer[index]" @keyup.enter="checkdetail(index)">
+                <label :for="index">{{labels[index]}}</label> <input :id="index" v-model="customerDetails[index]" @keyup.enter="checkdetail(index)">
             </div>
             <button @click="placeAnOrder()">Order</button>
         </div>
