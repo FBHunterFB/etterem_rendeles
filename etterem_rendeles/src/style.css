@@ -1,20 +1,35 @@
+#page, .input, .inputs,#top{ display: grid; }
+button{cursor: grab;}
+input,.menu button{border: none;}
 #page{
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 100%; margin: 0 auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 10px 10px;
 }
 
-.input, .inputs{
-    display: grid;
-    justify-content: center;
-    align-items: center;
-}
+input{background: #111; color: aqua; padding: 0.25vw; border-radius: 0.5vw;}
 
-.input{
-    grid-template-columns: 1fr 1fr;
-}
+.input{ grid-template-columns: 1fr 1fr; gap: 10px 10px; align-items: center;}
 
 .inputs{
-    grid-template-columns: 1fr;
+    width: 25%; height: 10vw; padding: 1vw;
+    position: fixed; right: 0; bottom: 0;
+    grid-template-columns: 1fr; background: rgb(20, 25, 26); text-align: center; justify-content: center;
 }
+
+.inputs button{
+    background: none; color: aquamarine; border-color: aquamarine; border-style: dotted;
+}
+
+#top{ display: grid;grid-template-columns: 0.5fr 2fr 1fr; background: #111; text-align: center;}
+
+.menu{
+    background: rgb(19, 30, 31); color: aquamarine;
+    text-align: center; padding: 1vw;
+}
+
+.menu button{
+    padding: 0.5vw; width: 50%; border-radius: 0.5vw;
+    background: rgb(66, 81, 82); color: aqua;
+}
+
+body{background: rgb(0, 59, 49); color: aquamarine;}
